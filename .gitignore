@@ -1,5 +1,12 @@
+*.egg-info/
 *.pyc
-__pycache__
-venv
-static
-
+.coverage
+.flask_env
+.pytest_cache/
+__pycache__/
+build/
+dist/
+htmlcov/
+instance/
+static/
+venv/
