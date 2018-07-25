@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from db import init_app, init_db
 
 app = Flask(__name__)
@@ -9,6 +9,10 @@ def index():
 
 @app.route('/creature/adopt', methods=['GET', 'POST'])
 def adopt():
+    if request.method == 'POST':
+        name=request.form['name'],
+        species=request.form['species'],
+        return redirect(url_for('index'))
     return render_template('adopt.html')
 
 def create_app():
