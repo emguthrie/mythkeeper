@@ -4,19 +4,39 @@
     <meta charset="UTF-8">
     <title>Mythkeeper</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
+<style>
+	body {
+		padding-top: 5%;
+	}
+	div {
+		padding: 1em;
+	    }
+	.main {
+		width: 50%;
+	}
+</style>
+
   </head>
   <body>
-	  <table border="1">
-		  <tr>
-			  <td rowspan="3"><img src="{{ url_for('static', filename = 'gryphon.png') }}"></td>
-			  <td>Name</td>
-		  </tr>
-		  <tr>
-			  <td>Creature</td>
-		  </tr>
-		  <tr>
-			  <td>Health</td>
-		  </tr>
 
+		  <div class="container main">
+		  <div class="row border">
+		      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			      <img src="{{ url_for('static', filename = 'gryphon.png') }}">                  </div>
+		      </div>
+		      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				  Name
+			  </div>
+			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				  Creature
+			  </div>
+			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				  Health
+			  </div>
+		      </div>
+		  </div>
+	  </div>
   </body>
 </html>
