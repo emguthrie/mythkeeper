@@ -15,13 +15,13 @@
 	  </head>
 	  <h1 class="text-center">Adopt a creature!</h1>
 	  <body>
-	  <div class="container col-sm-4 border">
+	  <div class="container col-lg-5 border">
 		  <form action="{{ url_for('adopt') }}" method="POST">
-			  <div class="form-group col-sm-4">
+			  <div class="form-group col-lg-5">
 				<label for="creatureName">Name</label>
 			  	<input type="text" name="name"><br />
 			  </div>
-			  <div class="form-group col-sm-4">
+			  <div class="form-group col-lg-5">
 				  <select class="form-control" name="species">
 				  <option value="dragon">Dragon</option>
 				  <option value="gryphon">Gryphon</option>
@@ -29,7 +29,7 @@
 				  <option value="unicorn">Unicorn</option>
 				  </select> <br />
 			 </div>
-			 <div class="form-group col-sm-4">
+			 <div class="form-group col-lg-5">
 			 <button type="submit" class="btn btn-primary">Submit</button>
 			 </div>
 		  </form>
