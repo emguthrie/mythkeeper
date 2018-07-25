@@ -6,16 +6,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
 <style>
 	body {
-		padding-top: 60px;
+		padding-top: 5%;
 	     }
 	div {
-		padding: 5px;
+		padding: 1em;
 	    }
+	.main {
+		width: 50%;
+	}
 </style>
 	  </head>
 	  <h1 class="text-center">Adopt a creature!</h1>
 	  <body>
-	  <div class="container col-lg-5 border">
+	  <div class="container main border">
 		  <form action="{{ url_for('adopt') }}" method="POST">
 			  <div class="form-group col-lg-5">
 				<label for="creatureName">Name</label>
