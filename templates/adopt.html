@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mythkeeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
+<style>
+	body {
+		padding-top: 60px;
+	     }
+	div {
+		padding: 5px;
+	    }
+</style>
+	  </head>
+	  <h1 class="text-center">Adopt a creature!</h1>
+	  <body>
+	  <div class="container col-sm-4 border">
+		  <form action="{{ url_for('adopt') }}" method="POST">
+			  <div class="form-group col-sm-4">
+				<label for="creatureName">Name</label>
+			  	<input type="text" name="name"><br />
+			  </div>
+			  <div class="form-group col-sm-4">
+				  <select class="form-control" name="species">
+				  <option value="dragon">Dragon</option>
+				  <option value="gryphon">Gryphon</option>
+				  <option value="phoenix">Phoenix</option>
+				  <option value="unicorn">Unicorn</option>
+				  </select> <br />
+			 </div>
+			 <div class="form-group col-sm-4">
+			 <button type="submit" class="btn btn-primary">Submit</button>
+			 </div>
+		  </form>
+	  </div>
+  </body>
+</html>
