@@ -42,7 +42,6 @@ CREATE TABLE species (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
 	starting_health INTEGER NOT NULL,
-	max_health INTEGER NOT NULL
 );
 
 CREATE TABLE user_item (
