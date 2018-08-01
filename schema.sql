@@ -17,7 +17,7 @@ CREATE TABLE creature (
 	name TEXT NOT NULL, 
 	health INTEGER NOT NULL,
 	max_health INTEGER NOT NULL,
-	alive BOOLEAN NOT NULL,
+	alive INTEGER NOT NULL,
 	owner_id INTEGER,
 	species_id INTEGER,
 	FOREIGN KEY (owner_id) REFERENCES user(id),
