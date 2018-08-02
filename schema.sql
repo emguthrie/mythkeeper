@@ -41,7 +41,7 @@ CREATE TABLE task (
 CREATE TABLE species (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
-	starting_health INTEGER NOT NULL,
+	starting_health INTEGER NOT NULL
 );
 
 CREATE TABLE user_item (
