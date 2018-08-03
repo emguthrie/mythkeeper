@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db import init_app, init_db, get_db
+# from db import init_app, init_db, get_db
+from db import get_db
 
 app = Flask(__name__)
 
@@ -9,14 +10,42 @@ def index():
 
 @app.route('/creature/adopt', methods=['GET', 'POST'])
 def adopt():
+    # if the form is submitted...
     if request.method == 'POST':
+
+        owner_id = 1
+
+        # get name and species from the form
         name=request.form['name']
         species=request.form['species']
+
+
         db = get_db()
+        # determine id for the chosen species
+        fetched_row = db.execute('SELECT id '
+                                'FROM species '
+                                'WHERE name = ?',
+                                (species,)
+                                ).fetchone()
+
+        for i in fetched_row:
+            species_id=i
+
+        # determine starting health for the chosen species
+        fetched_row = db.execute('SELECT starting_health '
+                                     'FROM species '
+                                     'WHERE id = ?',
+                                     #(str(species_id),)
+                                     (species_id,)
+                                     ).fetchone()
+        for i in fetched_row:
+            starting_health=i
+
+        # add the creature to the database
         db.execute(
                 'INSERT INTO creature (name, health, max_health, alive, owner_id, species_id)'
                 'VALUES (?, ?, ?, ?, ?, ?)',
-                (name, 100, 100, 0, 1, 1)
+                (name, starting_health, starting_health, 1, owner_id, species_id)
                 )
         db.commit()
         return redirect(url_for('index'))
