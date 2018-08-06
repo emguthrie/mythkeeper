@@ -19,14 +19,47 @@ def login():
 #TODO: account login
 
 @app.route('/task/add', methods=['GET', 'POST'])
-def newtask():
+def newtask(): 
+    if request.method == 'POST':
+
+        db = get_db()
+
+        #TODO: Matching owner ID
+        owner_id = 1
+
+        # get name and difficulty from the form
+        name=request.form['name']
+        diffstring=request.form['difficulty']
+
+        # convert difficulty string to an integer
+        if diffstring is 'Easy':
+            difficulty = 1
+
+        elif diffstring is 'Medium':
+            difficulty = 2
+
+        else:
+            difficulty = 3
+
+        # get description from the form
+        description=request.form['description']
+
+        # add the task to the database
+        db.execute(
+                'INSERT INTO task (name, difficulty, description, owner_id)'
+                'VALUES (?, ?, ?, ?)',
+                (name, difficulty, description, owner_id)
+                )
+        db.commit()
+        return redirect(url_for('index'))
     return render_template('newtask.html')
-#TODO: adding tasks
 
 @app.route('/creature/adopt', methods=['GET', 'POST'])
 def adopt():
     # if the form is submitted...
     if request.method == 'POST':
+
+        db = get_db()
 
         #TODO: Matching owner ID
         owner_id = 1
@@ -35,8 +68,6 @@ def adopt():
         name=request.form['name']
         species=request.form['species']
 
-
-        db = get_db()
         # determine id for the chosen species
         fetched_row = db.execute('SELECT id '
                                 'FROM species '
