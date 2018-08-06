@@ -11,16 +11,24 @@ def index():
 @app.route('/account/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
+#TODO: account registration
 
 @app.route('/account/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+#TODO: account login
+
+@app.route('/task/add', methods=['GET', 'POST'])
+def newtask():
+    return render_template('newtask.html')
+#TODO: adding tasks
 
 @app.route('/creature/adopt', methods=['GET', 'POST'])
 def adopt():
     # if the form is submitted...
     if request.method == 'POST':
 
+        #TODO: Matching owner ID
         owner_id = 1
 
         # get name and species from the form
