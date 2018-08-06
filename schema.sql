@@ -35,7 +35,9 @@ CREATE TABLE task (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
 	difficulty INTEGER NOT NULL,
-	description TEXT NOT NULL
+	description TEXT NOT NULL,
+	owner_id INTEGER NOT NULL, 
+	FOREIGN KEY (owner_id) REFERENCES user(id)
 );
 
 CREATE TABLE species (
