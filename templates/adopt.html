@@ -2,25 +2,23 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mythkeeper</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
 <style>
 	body {
 		padding-top: 5%;
-	     }
+	}
 	div {
 		padding: 1em;
-	    }
-	.main {
-		width: 50%;
 	}
 	button {
 		margin-right: 2em;
 	}
 </style>
 	  </head>
-	  <h1 class="text-center">Adopt a creature!</h1>
 	  <body>
+	  <h1 class="text-center">Adopt a creature!</h1>
 	  <div class="container main border">
 		  <form action="{{ url_for('adopt') }}" method="POST">
 			  <label for="creatureName">Name</label><br />

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mythkeeper</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
 <style>
@@ -10,15 +11,16 @@
 	}
 	div {
 		padding: 1em;
-	    }
-	.main {
-		width: 50%;
+	}
+	button {
+		margin-right: 2em;
 	}
 </style>
 
   </head>
   <body>
 
+	  <h1 class="text-center">Mythkeeper</h1>
 		  <div class="container main">
 		  <div class="row border">
 		      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -36,10 +38,13 @@
 				  Health
 			  </div>
 		      </div>
-		  </div>
-	  </div>
-	  <div class="container main">
+	  <div class="container">
 	  	<a class="btn btn-primary" href="/creature/adopt" role="button">Adopt a Creature</a>
+		<a class="btn btn-primary" href="/task/add" role="button">Create a Task</a>
 	</div>
+		  </div>
+
+	  </div>
+
   </body>
 </html>

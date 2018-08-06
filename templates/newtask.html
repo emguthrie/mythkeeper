@@ -8,13 +8,10 @@
 <style>
 	body {
 		padding-top: 5%;
-	     }
+	}
 	div {
 		padding: 1em;
-	    }
-	/* .main {
-		width: 50%;
-	} */
+	}
 	button {
 		margin-right: 2em;
 	}
@@ -23,16 +20,16 @@
 	  <h1 class="text-center">Add a Task</h1>
 	  <body>
 	  <div class="container main border">
-		  <form action="{{ url_for('adopt') }}" method="POST">
+		  <form action="{{ url_for('newtask') }}" method="POST">
 			  <label for="taskName">Task</label>
 			  <div class="form-group col-lg-6 row">
 			  	<input type="text" name="name"><br />
 			  </div>
 			  <div class="form-group col-lg-6 row">
-				  <select class="form-control" name="species">
-				  <option value="dragon">Easy</option>
-				  <option value="gryphon">Medium</option>
-				  <option value="phoenix">Hard</option>
+				  <select class="form-control" name="difficulty">
+				  <option value="Easy">Easy</option>
+				  <option value="Medium">Medium</option>
+				  <option value="Hard">Hard</option>
 				  </select> 
 			 </div>
 			 <label for="descName">Description (Optional)</label>
