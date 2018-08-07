@@ -9,5 +9,4 @@ build/
 dist/
 htmlcov/
 instance/
-static/
 venv/
