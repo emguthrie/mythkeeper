@@ -10,15 +10,15 @@ def index():
 
     db = get_db()
 
-        #TODO: some way to determine current active creature id
-        creature_id = 1
+    #TODO: some way to determine current active creature id
+    creature_id = 1
 
-                active_creature = db.execute(
-                                    'SELECT c.name, c.species_id, c.health, s.id '
-                                    'FROM creature c JOIN species s ON c.species_id = s.id '
-                                    'WHERE c.id = ?',
-                                    (creature_id,)
-                                    ).fetchone()
+    active_creature = db.execute(
+                                'SELECT c.name, c.species_id, c.health, s.id '
+                                'FROM creature c JOIN species s ON c.species_id = s.id '
+                                'WHERE c.id = ?',
+                                (creature_id,)
+                                ).fetchone()
 
 @app.route('/account/register', methods=['GET', 'POST'])
 def register():
