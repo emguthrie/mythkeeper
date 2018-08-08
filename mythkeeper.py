@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
 
     db = get_db()
 
@@ -15,10 +14,14 @@ def index():
 
     active_creature = db.execute(
                                 'SELECT c.name, c.species_id, c.health, s.id '
-                                'FROM creature c JOIN species s ON c.species_id = s.id '
+                                'FROM creature c '
+                                'JOIN species s '
+                                'ON c.species_id = s.id '
                                 'WHERE c.id = ?',
                                 (creature_id,)
                                 ).fetchone()
+
+    return render_template('index.html', creature=active_creature)
 
 @app.route('/account/register', methods=['GET', 'POST'])
 def register():
@@ -58,7 +61,8 @@ def newtask():
 
         # add the task to the database
         db.execute(
-                'INSERT INTO task (name, difficulty, description, owner_id)'
+                'INSERT INTO task '
+                '(name, difficulty, description, owner_id)'
                 'VALUES (?, ?, ?, ?)',
                 (name, difficulty, description, owner_id)
                 )
@@ -102,7 +106,8 @@ def adopt():
 
         # add the creature to the database
         db.execute(
-                'INSERT INTO creature (name, health, max_health, alive, owner_id, species_id)'
+                'INSERT INTO creature '
+                '(name, health, max_health, alive, owner_id, species_id)'
                 'VALUES (?, ?, ?, ?, ?, ?)',
                 (name, starting_health, starting_health, 1, owner_id, species_id)
                 )
