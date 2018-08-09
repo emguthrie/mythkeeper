@@ -13,7 +13,8 @@ def index():
     creature_id = 1
 
     active_creature = db.execute(
-                                'SELECT c.name, c.species_id, c.health, s.id '
+                                'SELECT c.name, c.species_id, c.health, '
+                                'c.max_health, s.name '
                                 'FROM creature c '
                                 'JOIN species s '
                                 'ON c.species_id = s.id '
