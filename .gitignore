@@ -1,7 +1,7 @@
 *.egg-info/
 *.pyc
 *.swp
-*.sql
+*.sqlite
 .coverage
 .flask_env
 .pytest_cache/
