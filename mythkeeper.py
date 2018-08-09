@@ -5,10 +5,17 @@ import flask_login
 
 app = Flask(__name__)
 
+app.secret_key = 'secret string' #TODO: Change this
+
+login_manager = flask_login.LoginManager()
+
+login_manager.init_app(app)
+
+with app.app_context():
+    db = get_db()
+
 @app.route('/')
 def index():
-
-    db = get_db()
 
     #TODO: some way to determine current active creature id
     creature_id = 1
@@ -28,55 +35,15 @@ def index():
 @app.route('/account/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
-#TODO: account registration
 
 @app.route('/account/login', methods=['GET', 'POST'])
 def login():
-    #TODO: Below should maybe go somewhere else?
-    app.secret_key = 'secret string' #TODO: Change this
-    
-    login_manager = flask_login.LoginManager()
-    
-    login_manager.init_app(app)
-   
-    db = get_db()
-    
-    users = db.execute('SELECT * FROM user').fetchall()
-
-    class User(flask_login.UserMixin):
-        pass
-
-    @login_manager.user_loader
-    def user_loader(email):
-        if email not in users:
-            return
-        
-        user = User()
-        user.id = email
-        return user
-    
-    @login_manager.request_loader
-    def request_loader(request):
-        email = request.form.get('email')
-        if email not in users:
-            return
-
-        user = User()
-        user.id = email
-
-        # TODO: password encryption
-        user.is_authenticated = request.form['password'] == users[email]['password']
-
-        return user
-
     return render_template('login.html')
-#TODO: Above should maybe go somewhere else?
 
 @app.route('/task/add', methods=['GET', 'POST'])
 def newtask(): 
     if request.method == 'POST':
 
-        db = get_db()
 
         #TODO: Matching owner ID
         owner_id = 1
@@ -114,7 +81,6 @@ def adopt():
     # if the form is submitted...
     if request.method == 'POST':
 
-        db = get_db()
 
         #TODO: Matching owner ID
         owner_id = 1
