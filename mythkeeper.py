@@ -11,6 +11,10 @@ login_manager = flask_login.LoginManager()
 
 login_manager.init_app(app)
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
 with app.app_context():
     db = get_db()
 
@@ -38,7 +42,34 @@ def register():
 
 @app.route('/account/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'GET':
+        return render_template('login.html')
+    
+    db = get_db()
+
+    name = request.form['name']
+    password = request.form['password']
+
+    #TODO: Null check
+    #TODO: user doesn't exist
+    #TODO: user does exist but password doesn't match
+    #TODO: success
+    fetched_user = db.execute('SELECT password, id '
+                              'FROM user '
+                              'WHERE username = ?',
+                             (name,)
+                             ).fetchone()
+
+    # does submitted password match database password?
+
+    if password == fetched_user[password]:
+        print('logged in')
+
+    print(fetched_user)
+    for i in fetched_user:
+        print(i)
+
+        return render_template('login.html')
 
 @app.route('/task/add', methods=['GET', 'POST'])
 def newtask(): 
