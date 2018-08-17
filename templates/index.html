@@ -19,13 +19,16 @@
 
   </head>
   <body>
+	  {% if current_user.is_authenticated %}
+	    Hi {{ current_user.name }}!
+	    {% endif %}
 
 	  <h1 class="text-center">Mythkeeper</h1>
 		  <div class="container main">
 		  <div class="row border">
 		      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				  <img class="img-fluid" src="{{ url_for('static', filename = '{{ creature[4] }}.png') }}">                  </div>
+				  <img class="img-fluid" src="{{ url_for('static', filename = 'placeholder.png') }}">                  </div>
 		      </div>
 		      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
