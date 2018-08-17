@@ -15,7 +15,6 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.get(user_id)
 
-<<<<<<< HEAD
 with app.app_context():
     db = get_db()
 
@@ -37,15 +36,12 @@ def index():
 
     return render_template('index.html', creature=active_creature)
 
-=======
->>>>>>> f900a436aa92b0dfaf1bed839f32708a6b18006d
 @app.route('/account/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
 
 @app.route('/account/login', methods=['GET', 'POST'])
 def login():
-<<<<<<< HEAD
     if request.method == 'GET':
         return render_template('login.html')
     
@@ -74,7 +70,6 @@ def login():
         print(i)
 
         return render_template('login.html')
-=======
     #TODO: Below should maybe go somewhere else?
     app.secret_key = 'secret string' #TODO: Change this
     
@@ -114,7 +109,6 @@ def login():
 
     return render_template('login.html')
 #TODO: Above should maybe go somewhere else?
->>>>>>> f900a436aa92b0dfaf1bed839f32708a6b18006d
 
 @app.route('/task/add', methods=['GET', 'POST'])
 def newtask(): 
